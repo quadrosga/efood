@@ -6,7 +6,9 @@
     "cra-template-typescript": "1.2.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-scripts": "5.0.1"
+    "react-scripts": "5.0.1",
+    "styled-components": "^6.1.13",
+    "web-vitals": "^4.2.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -33,6 +35,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react": "^19.0.1"
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.2"
   }
 }
