@@ -13,4 +13,15 @@ export const GlobalCss = createGlobalStyle`
     box-sizing: border-box;
     font-family: Roboto, sans-serif;
     }
+
+    body {
+    background-color: ${colors.white};
+    color: ${colors.hotPink};
+  }
+
+  .container {
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+  }
 `;
