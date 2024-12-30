@@ -26,8 +26,4 @@ export const ProductDescription = styled.p`
   font-size: 14px;
   margin-bottom: 8px;
   line-height: 22px;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 `;
