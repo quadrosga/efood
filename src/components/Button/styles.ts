@@ -4,13 +4,21 @@ import { colors } from '../../styles';
 import { Props } from '.';
 
 export const ButtonContainer = styled.button<Props>`
-  color: ${(props) =>
-    props.type === 'link' ? colors.lightPink : colors.hotPink};
+  display: flex;
+  color: ${colors.hotPink};
   font-weight: bold;
   font-size: 14px;
-  background-color: ${(props) =>
-    props.type === 'link' ? colors.hotPink : colors.lightPink};
+  background-color: ${colors.lightPink};
   padding: 4px auto;
+  border-radius: 0;
+  width: 100%;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    border: none;
+  }
 `;
 export const ButtonLink = styled(Link)`
   display: block;
@@ -23,6 +31,6 @@ export const ButtonLink = styled(Link)`
   background-color: ${colors.hotPink};
 
   &:hover {
-    ${colors.lightPink};
+    color: ${colors.lightPink};
   }
 `;

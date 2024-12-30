@@ -1,6 +1,6 @@
 import Restaurant from '../../models/Restaurants';
 import { List } from './styles';
-import RestaurantCard from '../Restaurant';
+import RestaurantCard from '../RestaurantCard';
 
 export type Props = {
   restaurants: Restaurant[];

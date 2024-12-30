@@ -12,7 +12,14 @@ type Props = {
   description: string;
 };
 
-const Restaurant = ({ id, title, image, infos, score, description }: Props) => (
+const RestaurantCard = ({
+  id,
+  title,
+  image,
+  infos,
+  score,
+  description,
+}: Props) => (
   <Card>
     <Image src={image} alt={title} />
     <Infos>
@@ -36,4 +43,4 @@ const Restaurant = ({ id, title, image, infos, score, description }: Props) => (
   </Card>
 );
 
-export default Restaurant;
+export default RestaurantCard;

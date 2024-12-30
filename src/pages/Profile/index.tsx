@@ -1,7 +1,8 @@
 import { useParams } from 'react-router';
 import Banner from '../../components/Banner';
-// import ProductsList from '../../components/ProductsList';
+import ProductsList from '../../components/ProductsList';
 import { allRestaurants } from '../Home';
+import { products } from '../../productsData';
 
 const Profile = () => {
   const { id } = useParams();
@@ -11,6 +12,8 @@ const Profile = () => {
     return <div>Restaurant not found</div>;
   }
 
+  const restaurantProducts = products[restaurant.id];
+
   return (
     <div>
       <Banner
@@ -18,6 +21,7 @@ const Profile = () => {
         image={restaurant.image}
         infos={restaurant.infos}
       />
+      <ProductsList products={restaurantProducts} />
     </div>
   );
 };
