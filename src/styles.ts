@@ -8,8 +8,8 @@ export const colors = {
   grey: ' #4B4B4B',
 };
 
-const GlobalStyle = createGlobalStyle`
-  * {
+export const GlobalStyle = createGlobalStyle`
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -20,7 +20,31 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     background-color: ${colors.offWhite};
     color: ${colors.hotPink};
+    line-height: 1.5;
+  }
+
+  #root {
+    min-height: 100vh;
+    overflow-x: hidden;
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  a {
     text-decoration: none;
+    color: inherit;
+  }
+
+  ul, ol {
+    list-style: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
   }
 
   .container {
@@ -29,5 +53,3 @@ const GlobalStyle = createGlobalStyle`
     margin: 0 auto;
   }
 `;
-
-export default GlobalStyle;

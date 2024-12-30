@@ -2,7 +2,7 @@ class Restaurant {
   id: number;
   infos: string[];
   image: string;
-  name: string;
+  title: string;
   score: string;
   description: string;
 
@@ -10,14 +10,14 @@ class Restaurant {
     id: number,
     infos: string[],
     image: string,
-    name: string,
+    title: string,
     score: string,
     description: string
   ) {
     this.id = id;
     this.infos = infos;
     this.image = image;
-    this.name = name;
+    this.title = title;
     this.score = score;
     this.description = description;
   }
