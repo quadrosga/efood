@@ -14,6 +14,13 @@ type ModalProps = {
   onClose: () => void;
 };
 
+const formataPreco = (preco = 0) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  }).format(preco);
+};
+
 const Modal = ({ products, onClose }: ModalProps) => (
   <>
     <Overlay onClick={onClose}>
@@ -30,7 +37,7 @@ const Modal = ({ products, onClose }: ModalProps) => (
               <p>{product.descricao}</p>
               <p>{`Serve: ${product.porcao}`}</p>
               <Button type="button" title="Adicionar ao carrinho">
-                Adicionar ao carrinho
+                {`Adicionar ao carrinho - ${formataPreco(product.preco)}`}
               </Button>
             </div>
           </ModalContent>

@@ -22,6 +22,7 @@ export const ModalContainer = styled.div`
 
   ${ButtonContainer} {
     width: 218px;
+    padding: 0;
   }
 `;
 
