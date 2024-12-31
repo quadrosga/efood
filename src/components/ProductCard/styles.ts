@@ -14,6 +14,7 @@ export const ProductImage = styled.img`
   width: 100%;
   height: 167px;
   max-width: 304px;
+  object-fit: cover;
 `;
 
 export const ProductName = styled.h3`
