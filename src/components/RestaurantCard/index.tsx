@@ -19,28 +19,37 @@ const RestaurantCard = ({
   infos,
   score,
   description,
-}: Props) => (
-  <Card>
-    <Image src={image} alt={title} />
-    <Infos>
-      {infos.map((info) => (
-        <Tag key={info}>{info}</Tag>
-      ))}
-    </Infos>
-    <Descricao>
-      <Titulo>
-        <h3>{title}</h3>
-        <Nota>
-          <h3>{score}</h3>
-          <img src={estrela} alt="estrela" />
-        </Nota>
-      </Titulo>
-      <p>{description}</p>
-      <Button type="link" to={`/profile/${id}`} title="Saiba mais">
-        Saiba mais
-      </Button>
-    </Descricao>
-  </Card>
-);
+}: Props) => {
+  const getDescription = (description: string) => {
+    if (description.length > 245) {
+      return description.slice(0, 245) + '...';
+    }
+    return description;
+  };
+
+  return (
+    <Card>
+      <Image src={image} alt={title} />
+      <Infos>
+        {infos.map((info) => (
+          <Tag key={info}>{info}</Tag>
+        ))}
+      </Infos>
+      <Descricao>
+        <Titulo>
+          <h3>{title}</h3>
+          <Nota>
+            <h3>{score}</h3>
+            <img src={estrela} alt="estrela" />
+          </Nota>
+        </Titulo>
+        <p>{getDescription(description)}</p>
+        <Button type="link" to={`/profile/${id}`} title="Saiba mais">
+          Saiba mais
+        </Button>
+      </Descricao>
+    </Card>
+  );
+};
 
 export default RestaurantCard;
