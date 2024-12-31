@@ -20,7 +20,7 @@ const Header = () => {
     </ProfileHeader>
   ) : (
     <Image style={{ backgroundImage: `url(${bannerPattern})` }}>
-      <HeaderContainer className="container">
+      <HeaderContainer>
         <Link to="/">
           <img src={logo} alt="EFOOD" />
         </Link>
