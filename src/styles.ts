@@ -14,42 +14,48 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     list-style: none;
-  }
+}
 
-  body {
+body {
     font-family: 'Roboto', sans-serif;
     background-color: ${colors.offWhite};
     color: ${colors.hotPink};
     line-height: 1.5;
-  }
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
 
-  #root {
+#root {
+    width: 100%;
+    max-width: 1440px;
     min-height: 100vh;
     overflow-x: hidden;
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  a {
+}
+  
+a {
     text-decoration: none;
     color: inherit;
-  }
+}
 
-  ul, ol {
+ul, ol {
     list-style: none;
-  }
+}
 
-  img {
+img {
     max-width: 100%;
     height: auto;
     display: block;
-  }
+}
 
-  .container {
+.container {
+    width: 100%; 
     max-width: 1024px;
-    width: 100%;
     margin: 0 auto;
-  }
+}
 `;
