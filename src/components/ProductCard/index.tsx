@@ -1,14 +1,6 @@
+import { MenuItem } from '../../pages/Home';
 import Button from '../Button';
 import { Card, ProductDescription, ProductImage, ProductName } from './styles';
-
-export interface MenuItem {
-  foto: string;
-  preco: number;
-  id: number;
-  nome: string;
-  descricao: string;
-  porcao: string;
-}
 
 type ProductCardProps = {
   menuItem: MenuItem;

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ProductCard from '../ProductCard';
 import { List } from './styles';
-import { MenuItem } from '../ProductCard';
+import { MenuItem } from '../../pages/Home';
 import Modal from '../../Modal';
 
 export type ProductsListProps = {

@@ -8,6 +8,7 @@ export interface MenuItem {
   nome: string;
   descricao: string;
   porcao: string;
+  restaurantId: number;
 }
 
 export type Restaurant = {
@@ -23,14 +24,6 @@ export type Restaurant = {
 
 const Home = () => {
   const { data: restaurants } = useGetRestaurantsQuery();
-
-  // const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
-
-  // useEffect(() => {
-  //   fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-  //     .then((res) => res.json())
-  //     .then((res) => setRestaurants(res));
-  // });
 
   if (restaurants) {
     return <RestaurantsList restaurants={restaurants} />;

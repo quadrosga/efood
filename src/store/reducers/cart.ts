@@ -1,12 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Restaurant } from '../../pages/Home';
 
 export type Product = {
   id: number;
   nome: string;
   foto: string;
   preco: number;
-  restauranteId: number;
+  restauranteId?: number;
 };
 
 type CartState = {

@@ -2,15 +2,7 @@ import { useParams } from 'react-router';
 import Banner from '../../components/Banner';
 import ProductsList from '../../components/ProductsList';
 import { useGetRestaurantQuery } from '../../services/api';
-
-export interface MenuItem {
-  foto: string;
-  preco: number;
-  id: number;
-  nome: string;
-  descricao: string;
-  porcao: string;
-}
+import { MenuItem } from '../Home';
 
 export type Restaurant = {
   id: number;

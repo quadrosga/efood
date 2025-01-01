@@ -17,12 +17,6 @@ type ModalProps = {
   restauranteId: number;
 };
 
-type CartItem = {
-  nome: string;
-  preco: number;
-  foto: string;
-};
-
 export const formataPreco = (preco = 0) => {
   return new Intl.NumberFormat('pt-BR', {
     style: 'currency',
