@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Routes from './routes';
 import { store } from './store';
+import Cart from './components/Cart';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Header />
         <Routes />
         <Footer />
+        <Cart />
       </BrowserRouter>
     </Provider>
   );

@@ -9,7 +9,7 @@ export const ButtonContainer = styled.button<Props>`
   font-weight: bold;
   font-size: 14px;
   background-color: ${colors.lightPink};
-  padding: 4px auto;
+  padding: 4px 0;
   border-radius: 0;
   width: 100%;
   height: 24px;
