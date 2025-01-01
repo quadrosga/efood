@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import Banner from '../../components/Banner';
 import ProductsList from '../../components/ProductsList';
+import { useGetRestaurantQuery } from '../../services/api';
 
 export interface MenuItem {
   foto: string;
@@ -25,34 +25,7 @@ export type Restaurant = {
 
 const Profile = () => {
   const { id } = useParams<{ id: string }>();
-  const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchRestaurant = async () => {
-      try {
-        const res = await fetch(
-          `https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`
-        );
-        if (res.ok) {
-          const data = await res.json();
-          setRestaurant(data);
-        } else {
-          console.error('Failed to fetch restaurant data');
-        }
-      } catch (error) {
-        console.error('Error fetching restaurant:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchRestaurant();
-  }, [id]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  const { data: restaurant } = useGetRestaurantQuery(id!);
 
   if (!restaurant) {
     return <div>Restaurant not found</div>;

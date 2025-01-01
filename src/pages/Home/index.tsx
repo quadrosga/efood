@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import RestaurantsList from '../../components/RestaurantsList';
+import { useGetRestaurantsQuery } from '../../services/api';
 
 export interface MenuItem {
   foto: string;
@@ -22,14 +22,20 @@ export type Restaurant = {
 };
 
 const Home = () => {
-  const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
+  const { data: restaurants } = useGetRestaurantsQuery();
 
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-      .then((res) => res.json())
-      .then((res) => setRestaurants(res));
-  });
+  // const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
 
-  return <RestaurantsList restaurants={restaurants} />;
+  // useEffect(() => {
+  //   fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
+  //     .then((res) => res.json())
+  //     .then((res) => setRestaurants(res));
+  // });
+
+  if (restaurants) {
+    return <RestaurantsList restaurants={restaurants} />;
+  }
+
+  return <h4>Loading...</h4>;
 };
 export default Home;
