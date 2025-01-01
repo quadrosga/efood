@@ -55,3 +55,9 @@ export const ProfileHeader = styled.div`
   //   height: 50px;
   // }
 `;
+
+export const CartButton = styled.a`
+  &:hover {
+    cursor: pointer;
+  }
+`;

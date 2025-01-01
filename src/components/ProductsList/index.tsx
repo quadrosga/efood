@@ -33,7 +33,11 @@ const ProductsList = ({ products }: ProductsListProps) => {
         </List>
       </div>
       {selectedProduct && (
-        <Modal products={[selectedProduct]} onClose={closeModal} />
+        <Modal
+          products={[selectedProduct]}
+          onClose={closeModal}
+          restauranteId={0}
+        />
       )}
     </>
   );
