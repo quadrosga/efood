@@ -20,7 +20,7 @@ const Profile = () => {
   const { data: restaurant } = useGetRestaurantQuery(id!);
 
   if (!restaurant) {
-    return <div>Restaurant not found</div>;
+    return <div>Loading...</div>;
   }
 
   return (
