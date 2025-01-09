@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import Routes from './routes';
 import { store } from './store';
 import Cart from './components/Cart';
+import AppFlow from './AppFlow';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Routes />
         <Footer />
         <Cart />
+        <AppFlow />
       </BrowserRouter>
     </Provider>
   );
