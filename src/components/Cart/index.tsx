@@ -4,6 +4,7 @@ import { CardContainer, Overlay, Sidebar, CartItem, Prices } from './styles';
 import { RootReducer } from '../../store';
 import { close, remove } from '../../store/reducers/cart';
 import { formataPreco } from '../../Modal';
+import { goToDelivery } from '../../store/reducers/app';
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart);
@@ -24,13 +25,18 @@ const Cart = () => {
     }, 0);
   };
 
+  const continueToDelivery = () => {
+    dispatch(close());
+    dispatch(goToDelivery());
+  };
+
   return (
     <CardContainer className={isOpen ? 'is-open' : ''}>
       <Overlay onClick={closeCart} />
       <Sidebar>
         <ul>
           {items.map((item) => (
-            <CartItem>
+            <CartItem key={item.id}>
               <img src={item.foto} />
               <div>
                 <h3>{item.nome}</h3>
@@ -44,7 +50,11 @@ const Cart = () => {
           <span>Valor total</span>
           <span>{formataPreco(getTotalPrice())}</span>
         </Prices>
-        <Button type="button" title="Clique aqui para continuer com a entrega">
+        <Button
+          type="button"
+          title="Clique aqui para continuer com a entrega"
+          onClick={continueToDelivery}
+        >
           Continuar com a entrega
         </Button>
       </Sidebar>
