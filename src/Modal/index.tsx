@@ -30,6 +30,7 @@ const Modal = ({ products, onClose }: ModalProps) => {
   const addToCart = (product: Product) => {
     dispatch(add(product));
     dispatch(open());
+    onClose();
   };
   return (
     <>
