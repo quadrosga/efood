@@ -11,13 +11,9 @@ import { RootReducer } from '../../store';
 
 const Delivery = () => {
   const dispatch = useDispatch();
-  const [purchase] = usePurchaseMutation();
+  const [] = usePurchaseMutation();
 
-  const { items } = useSelector((state: RootReducer) => state.cart);
-
-  const continueToPayment = () => {
-    dispatch(goToPayment());
-  };
+  const {} = useSelector((state: RootReducer) => state.cart);
 
   const ReturnToCart = () => {
     dispatch(goToCart());
