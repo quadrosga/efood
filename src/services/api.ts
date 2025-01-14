@@ -1,14 +1,44 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Restaurant } from '../pages/Home';
 
-type Purchase = {
-  id: string;
-  items: {
-    id: number;
-    nome: string;
-    preco: number;
-  }[];
-  total: number;
+type Product = {
+  id: number;
+  price: number;
+};
+
+type Delivery = {
+  receiver: string;
+  address: {
+    description: string;
+    city: string;
+    zipCode: string;
+    number: string;
+    complement: string;
+  };
+};
+
+type Payment = {
+  card: {
+    name: string;
+    number: string;
+    code: number;
+    expires: {
+      month: number;
+      year: number;
+    };
+  };
+};
+
+type PurchasePayload = {
+  products: Product[];
+  delivery: Delivery;
+  payment: Payment;
+};
+
+type PurchaseResponse = {
+  orderId: string;
+  status: string;
+  message?: string;
 };
 
 const api = createApi({
@@ -22,18 +52,18 @@ const api = createApi({
     getRestaurant: builder.query<Restaurant, string>({
       query: (id) => `restaurantes/${id}`,
     }),
-    createPurchase: builder.mutation<Purchase, Omit<Purchase, 'id'>>({
-      query: (newPurchase) => {
-        const id = crypto.randomUUID();
-
-        return {
-          url: 'compras',
-          method: 'POST',
-          body: {
-            ...newPurchase,
-            id,
-          },
-        };
+    purchase: builder.mutation<PurchaseResponse, PurchasePayload>({
+      query: (body) => ({
+        url: 'checkout',
+        method: 'POST',
+        body,
+      }),
+      transformResponse: (response: unknown): PurchaseResponse => {
+        if (response && typeof response === 'object' && 'orderId' in response) {
+          return response as PurchaseResponse;
+        } else {
+          throw new Error('Resposta inesperada da API');
+        }
       },
     }),
   }),
@@ -42,7 +72,7 @@ const api = createApi({
 export const {
   useGetRestaurantsQuery,
   useGetRestaurantQuery,
-  useCreatePurchaseMutation,
+  usePurchaseMutation,
 } = api;
 
 export default api;
