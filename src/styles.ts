@@ -31,7 +31,6 @@ body {
 
 #root {
     width: 100%;
-    max-width: 1440px;
     min-height: 100vh;
     overflow-x: hidden;
     margin: 0;
