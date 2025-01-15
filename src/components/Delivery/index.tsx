@@ -6,14 +6,13 @@ import { goToCart, goToPayment } from '../../store/reducers/app';
 import Button from '../Button';
 import { CardContainer, Overlay, Sidebar } from './styles';
 import { open } from '../../store/reducers/cart';
-import { usePurchaseMutation } from '../../services/api';
 import { RootReducer } from '../../store';
+import { Navigate } from 'react-router-dom';
 
 const Delivery = () => {
   const dispatch = useDispatch();
-  const [] = usePurchaseMutation();
 
-  const {} = useSelector((state: RootReducer) => state.cart);
+  const { items } = useSelector((state: RootReducer) => state.cart);
 
   const ReturnToCart = () => {
     dispatch(goToCart());
@@ -65,6 +64,10 @@ const Delivery = () => {
     if (isTouched && isInvalid) return message;
     return '';
   };
+
+  if (items.length === 0) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <form onSubmit={form.handleSubmit}>
@@ -148,7 +151,7 @@ const Delivery = () => {
             Continuar com o pagamento
           </Button>
           <Button
-            type="button"
+            type="submit"
             title="Clique aqui para voltar para o carrinho"
             onClick={ReturnToCart}
           >

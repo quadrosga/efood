@@ -5,7 +5,7 @@ type Address = {
   city: string;
   zipCode: string;
   number: number;
-  complement: string;
+  complement?: string;
 };
 
 type DeliveryState = {

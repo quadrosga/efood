@@ -13,7 +13,7 @@ type Delivery = {
     city: string;
     zipCode: string;
     number: string;
-    complement: string;
+    complement?: string;
   };
 };
 

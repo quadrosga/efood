@@ -27,7 +27,7 @@ const Header = () => {
     <ProfileHeader style={{ backgroundImage: `url(${bannerPattern})` }}>
       <Link to="/">Restaurantes</Link>
       <img src={logo} alt="EFOOD" />
-      <CartButton onClick={openCart}>
+      <CartButton role="button" onClick={openCart}>
         {items.length} - produto(s) no carrinho
       </CartButton>
     </ProfileHeader>

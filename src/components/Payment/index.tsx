@@ -8,8 +8,17 @@ import { usePurchaseMutation } from '../../services/api';
 import Button from '../Button';
 import { CardContainer, Overlay, Sidebar } from './styles';
 import { RootReducer } from '../../store';
-import { formataPreco } from '../../Modal';
+import { parseToBrl } from '../../utils';
 import { useEffect } from 'react';
+
+interface PaymentFormValues {
+  cardDisplayName: string;
+  cardNumber: string;
+  cardCode: string;
+  cep: string;
+  expiresMonth: string;
+  expiresYear: string;
+}
 
 const Payment = () => {
   const dispatch = useDispatch();
@@ -35,7 +44,7 @@ const Payment = () => {
     return items.reduce((acc, item) => acc + item.preco, 0);
   };
 
-  const continueToConfirmation = async (values: any) => {
+  const continueToConfirmation = async (values: PaymentFormValues) => {
     const purchaseData = {
       products: items.map((item) => ({ id: item.id, price: item.preco })),
       delivery: {
@@ -77,7 +86,7 @@ const Payment = () => {
     dispatch(goToDelivery());
   };
 
-  const form = useFormik({
+  const form = useFormik<PaymentFormValues>({
     initialValues: {
       cardDisplayName: '',
       cardNumber: '',
@@ -100,7 +109,7 @@ const Payment = () => {
           card: {
             name: values.cardDisplayName,
             number: values.cardNumber,
-            code: Number(values.cardCode),
+            code: values.cardCode,
             expires: {
               month: Number(values.expiresMonth),
               year: Number(values.expiresYear),
@@ -133,7 +142,7 @@ const Payment = () => {
       <CardContainer>
         <Overlay onClick={returnToDelivery} />
         <Sidebar>
-          <h3>Pagamento - Valor a pagar {formataPreco(getTotalPrice())}</h3>
+          <h3>Pagamento - Valor a pagar {parseToBrl(getTotalPrice())}</h3>
           <div>
             <label htmlFor="cardDisplayName">Nome no cartão</label>
             <input
@@ -217,7 +226,7 @@ const Payment = () => {
             Continuar com a entrega
           </Button>
           <Button
-            type="button"
+            type="submit"
             title="Clique aqui para retornar a edição de endereço"
             onClick={returnToDelivery}
           >

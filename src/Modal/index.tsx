@@ -10,18 +10,12 @@ import {
 } from './styles';
 import close from '../assets/images/close.png';
 import { add, open, Product } from '../store/reducers/cart';
+import { parseToBrl } from '../utils';
 
 type ModalProps = {
   products: MenuItem[];
   onClose: () => void;
   restauranteId: number;
-};
-
-export const formataPreco = (preco = 0) => {
-  return new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-  }).format(preco);
 };
 
 const Modal = ({ products, onClose }: ModalProps) => {
@@ -52,7 +46,7 @@ const Modal = ({ products, onClose }: ModalProps) => {
                   type="button"
                   title="Adicionar ao carrinho"
                 >
-                  {`Adicionar ao carrinho - ${formataPreco(product.preco)}`}
+                  {`Adicionar ao carrinho - ${parseToBrl(product.preco)}`}
                 </Button>
               </div>
             </ModalContent>

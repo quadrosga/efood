@@ -40,7 +40,8 @@ export const ProfileHeader = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
 
-  a {
+  a,
+  span {
     color: ${colors.hotPink};
     text-decoration: none;
     font-size: 18px;
@@ -50,13 +51,9 @@ export const ProfileHeader = styled.div`
       text-decoration: none;
     }
   }
-
-  // img {
-  //   height: 50px;
-  // }
 `;
 
-export const CartButton = styled.a`
+export const CartButton = styled.span`
   &:hover {
     cursor: pointer;
   }

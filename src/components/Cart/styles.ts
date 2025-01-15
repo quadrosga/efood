@@ -39,6 +39,14 @@ export const Sidebar = styled.aside`
     max-width: 100%;
     width: 100%;
   }
+
+  .empty-text {
+    font-size: 14px;
+    line-height: 22px;
+    color: ${colors.lightPink};
+    text-align: center;
+    font-weight: normal;
+  }
 `;
 
 export const CartItem = styled.li`
