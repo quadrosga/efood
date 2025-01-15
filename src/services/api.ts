@@ -29,7 +29,7 @@ type Payment = {
   };
 };
 
-type PurchasePayload = {
+export type PurchasePayload = {
   products: Product[];
   delivery: Delivery;
   payment: Payment;
@@ -37,8 +37,6 @@ type PurchasePayload = {
 
 type PurchaseResponse = {
   orderId: string;
-  status: string;
-  message?: string;
 };
 
 const api = createApi({
@@ -59,9 +57,11 @@ const api = createApi({
         body,
       }),
       transformResponse: (response: unknown): PurchaseResponse => {
+        console.log('API Response:', response);
         if (response && typeof response === 'object' && 'orderId' in response) {
           return response as PurchaseResponse;
         } else {
+          console.error('Unexpected API response:', response);
           throw new Error('Resposta inesperada da API');
         }
       },

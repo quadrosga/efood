@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { setOrderId, updatePayment } from '../../store/reducers/payment';
+import { updatePayment } from '../../store/reducers/payment';
 import { updateDelivery } from '../../store/reducers/delivery';
 import { goToConfirmation, goToDelivery } from '../../store/reducers/app';
-import { usePurchaseMutation } from '../../services/api';
+import { PurchasePayload, usePurchaseMutation } from '../../services/api';
 import Button from '../Button';
 import { CardContainer, Overlay, Sidebar } from './styles';
 import { RootReducer } from '../../store';
@@ -45,7 +45,7 @@ const Payment = () => {
   };
 
   const continueToConfirmation = async (values: PaymentFormValues) => {
-    const purchaseData = {
+    const purchaseData: PurchasePayload = {
       products: items.map((item) => ({ id: item.id, price: item.preco })),
       delivery: {
         receiver: receiver,
@@ -69,18 +69,25 @@ const Payment = () => {
 
     try {
       const response = await purchase(purchaseData).unwrap();
-      console.log('Resposta da purchase mutation:', response);
+      console.log('Purchase response:', response);
 
       if (response && response.orderId) {
-        dispatch(setOrderId(response.orderId));
         dispatch(goToConfirmation(response.orderId));
-      } else {
-        console.error('Order ID não disponível');
       }
     } catch (error) {
-      console.error('Erro ao processar o pagamento', error);
+      console.error('Purchase error:', error);
     }
   };
+
+  useEffect(() => {
+    console.log('Mutation State:', {
+      isLoading,
+      isError,
+      isSuccess,
+      data,
+      error,
+    });
+  }, [isLoading, isError, isSuccess, data, error]);
 
   const returnToDelivery = () => {
     dispatch(goToDelivery());
@@ -219,14 +226,14 @@ const Payment = () => {
             </small>
           </div>
           <Button
-            type="button"
+            type="submit"
             title="Clique aqui para continuar com a entrega"
             onClick={form.handleSubmit}
           >
             Continuar com a entrega
           </Button>
           <Button
-            type="submit"
+            type="button"
             title="Clique aqui para retornar a edição de endereço"
             onClick={returnToDelivery}
           >

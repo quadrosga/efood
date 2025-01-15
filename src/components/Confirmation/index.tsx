@@ -5,7 +5,7 @@ import { RootReducer } from '../../store';
 import { goToCart } from '../../store/reducers/app';
 
 const Confirmation = () => {
-  const orderId = useSelector((state: RootReducer) => state.payment.orderId);
+  const orderId = useSelector((state: RootReducer) => state.app.orderId);
 
   const dispatch = useDispatch();
 

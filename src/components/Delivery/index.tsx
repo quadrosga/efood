@@ -144,14 +144,14 @@ const Delivery = () => {
             />
           </div>
           <Button
-            type="button"
+            type="submit"
             title="Clique aqui para continuar com o pagamento"
             onClick={form.handleSubmit}
           >
             Continuar com o pagamento
           </Button>
           <Button
-            type="submit"
+            type="button"
             title="Clique aqui para voltar para o carrinho"
             onClick={ReturnToCart}
           >
